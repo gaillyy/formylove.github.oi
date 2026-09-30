@@ -1,0 +1,270 @@
+# formylove.github.oi
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="scene" id="scene">
+        <div class="envelope" id="envelope" onclick="openEnvelope()">
+            <div class="envelope-back">
+                <div class="letter-paper">
+                    <h2>Mylove</h2>
+
+                    <p>I have a message for you</p>
+                </div>
+                <div class="left-fold"></div>
+                <div class="right-fold"></div>
+                <div class="envelope-front"></div>
+                <div class="flap"></div>
+                <div class="heart"></div>
+            </div>
+        </div>
+        <p class="click-text">
+            Click the envelope
+        </p>
+    </div>
+    <div class="full-letter" id="fullLetter">
+        <h1>Hello Mylove</h1>
+
+        <p>
+            Im really sorry for everything. I know i made mistake, and i know i hurt you in ways i probably didnt realize at the time. Ive been thinking a lot about everything that happened between us, and honestly, I wish i could go back and do some things differenty.
+        </p>
+
+        <p>
+            Im sorry for the times I didnt understand you, for the things i said or did that hurt you, and for the moments when i made you feel like you werent appreciated or loved enough. I never wanted things to end up like thins, and i hate knowing that some of my actions played a part in us getting here.
+        </p>
+        <p>
+            I know we arenot perfect. Sometimes we misunderstand each other and sometimes we have arguments. But even during those moments, I still hope that we choose to understan each other and fix things together.
+        </p>
+
+        <p>
+            Im realy sorr mylove, i hope we can get back together as a couple. I love you biko mylove Im so sorry.
+        </p>
+
+        <p class="signature">
+            With all my heart,<br>
+            Your baki
+        </p>
+    </div>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #ffdce6;
+            font-family: Arial, Helvetica, sans-serif;
+            overflow: hidden;
+        }
+        .scene{
+            text-align: center;
+        }
+        .envelope{
+            width: 340px;
+            height: 230px;
+            position: relative;
+            margin: auto;
+            cursor: pointer;
+            perspective: 100px;
+        }
+        .envelope-back{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #ff6692;
+            border-radius: 12px;
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+        .letter-paper{
+            position: absolute;
+            width: 85%;
+            height: 85%;
+            background: white;
+            left: 7.5%;
+            top: 10%;
+            padding: 15px;
+            border-radius: 5px;
+            color: #555;
+            text-align: left;
+            transition: 1s;
+            z-index: 2;
+        }
+        .letter-paper h2{
+            text-align: center;
+            color: #e63963;
+            font-size: 20px;
+        }
+        .letter-paper p{
+            font-size: 12px;
+            margin-top: 10px;
+        }
+        .envelope-front{
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-left: 170px solid transparent;
+            border-right: 170px solid transparent;
+            border-bottom: 125px solid #ff7da3;
+            z-index: 4;
+        }
+        .left-fold{
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-top: 115px solid transparent;
+            border-bottom: 115px solid transparent;
+            border-left: 170px solid #ff5f8b;
+            z-index: 5;
+        }
+        .right-fold{
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 0;
+            border-top: 115px solid transparent;
+            border-bottom: 115px solid transparent;
+            border-left: 170px solid #ff5f8b;
+            z-index: 5;
+        }
+        .flap{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-left: 170px solid transparent;
+            border-right: 170px solid transparent;
+            border-top: 125px solid #ff8fb0;
+            transform-origin: top center;
+            transition: transform 0.8s ease;
+            z-index: 6;
+        }
+        .heart{
+            position: absolute;
+            top: 72px;
+            left: 50px;
+            transform: translateX(-50%);
+            font-size: 50px;
+            z-index: 7;
+            transition: 0.5s;
+        }    
+        .click-text{
+            margin-top: 25px;
+            color: #9e2148;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .envelope.open .heart{
+            opacity: 0;
+        }
+        .envelope.open .letter-paper{
+            transform: translateY(-170px);
+            z-index: 3;
+        }
+        .full-letter{
+            display: none;
+            width: 90%;
+            max-width: 600px;
+            background: #ff8fba;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            animation: showLetter 0.8s ease;
+            text-align: left;
+        }
+        .full-letter h1{
+            text-align: center;
+            color: #3d1930;
+            margin-bottom: 20px;
+        }
+        .full-letter p{
+            color: #3d1930;
+            font-size: 16px;
+            line-height: 1.7;
+            margin-bottom: 15px;
+            overflow-wrap: anywhere;
+        }
+        .signature{
+            text-align: right;
+            color: #a52b57 !important;
+            font-weight: bold;
+        }
+        @keyframes showLetter{
+            from{
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to{
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @media (max-width: 500px){
+            .envelope{
+                width: 290px;
+                height: 195px;
+            }
+            .envelope-front{
+                border-left-width: 145px;
+                border-right-width: 145px;
+                border-bottom-width: 105px;
+            }
+            .left-fold{
+                border-left-width: 145px;
+                border-right-width: 97px;
+                border-bottom-width: 97px;
+            }
+            .right-fold{
+                border-left-width: 145px;
+                border-right-width: 97px;
+                border-bottom-width: 97px;
+            }
+            .flap{
+                border-left-width: 145px;
+                border-right-width: 145px;
+                border-top-width: 105px;
+            }
+            .heart{
+                top: 60px;
+                font-size: 45px;
+            }
+            .full-letter{
+                padding: 22px;
+            }
+            .full-letter h1{
+                font-size: 26px;
+            }
+            .full-letter p{
+                font-size: 15px;
+            }
+        }
+    </style>
+    <script>
+        function openEnvelope(){
+            const envelope = document.getElementById("envelope");
+            const scene = document.getElementById("scene");
+            const fullLetter = document.getElementById("fullLetter");
+            envelope.classList.add("open");
+            setTimeout(function(){
+                scene.style.display = "none";
+                fullLetter.style.display = "block";
+            }, 1800);
+        }
+    </script>
+</body>
+</html>
